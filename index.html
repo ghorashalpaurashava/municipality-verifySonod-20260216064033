@@ -247,7 +247,7 @@
 </div>
 
 <script>
-    // সনদের ডাটাবেজ - এখানে পরবর্তীতে নতুন সনদ নম্বর ও তথ্য বাড়িয়ে নিতে পারবেন
+    // সনদের ডাটাবেজ (এখানে একে একে নতুন সনদ নম্বর ও তথ্য যোগ করতে পারবেন)
     const certificatesDatabase = {
         "20260216064033": {
             cert_bn: "২৫২৬০২১৬০৬৪০৩৩",
@@ -271,9 +271,10 @@
             address_bn: "গ্রাম: দরিহাওলাপাড়া, থানা/উপজেলা: পলাশ, ডাকঘর: চরসিন্দুর-১৬১০, পৌরসভা: ঘোড়াশাল, উপজেলা: পলাশ, জেলা: নরসিংদী।",
             address_en: "Village : Dariahlapara, Road/Block/Sector : , House/Holding : , Ward No : 06, Post : Char Sindur, Purnasiba : , Upazila : Palash, District : Narsingdi."
         }
+        // ভবিষ্যতে নতুন সনদ যোগ করতে চাইলে এখানে কমা দিয়ে আরেকটি যুক্ত করে দেবেন
     };
 
-    // পেজ লোড হওয়ার সময় কিউআর কোড বা লিংকের প্যারামিটার চেক করা
+    // পেজ লোড হওয়ার সাথে সাথে কিউআর কোডের লিংক থেকে নম্বর নিয়ে অটোমেটিক ফলাফল শো করার ফাংশন
     window.onload = function() {
         const urlParams = new URLSearchParams(window.location.search);
         let cert = urlParams.get('cert');
@@ -288,7 +289,7 @@
 
         if (cert && certificatesDatabase[cert]) {
             document.getElementById('certificateNo').value = cert;
-            searchCertificate();
+            searchCertificate(); // লিংকে আসার সাথে সাথেই অটোমেটিক সার্চ হয়ে ফলাফল দেখাবে
         }
     };
 
